@@ -1,10 +1,62 @@
+import { Link, NavLink } from "react-router-dom";
+import logo from "/assets/2.logo.svg"
 
 
 const Navbar = () => {
-    return (
-        <div>
+    const links = (
+        <>
+            <li className="text-lg font-bold"><NavLink to={'/'}>Home</NavLink></li>
+            <li className="text-lg font-bold"><NavLink to={'/allVisas'}>All Visas</NavLink></li>
+            <li className="text-lg font-bold"><NavLink to={'/addVisa'}>Add Visa</NavLink></li>
+            <li className="text-lg font-bold"><NavLink to={'/myApplications'}>My Applications</NavLink></li>
             
-        </div>
+            <div className="divider divider-start "></div>
+            <li className="text-lg font-bold sm:hidden"><NavLink to={'/login'}>Login</NavLink></li>
+            <li className="text-lg font-bold sm:hidden"><NavLink to={'/register'}>Register</NavLink></li>
+        </>
+    )
+    return (
+        <>
+            <div className="navbar sm:w-11/12 mx-auto py-6 px-3 bg-base-100">
+                <div className="navbar-start">
+                    <Link to={'/'}><img src={logo} alt="logo" /></Link>
+                </div>
+
+                <div className="navbar-center hidden lg:flex">
+                    <ul className="menu menu-horizontal px-1 gap-2">
+                        {links}
+                    </ul>
+                </div>
+
+                <div className="navbar-end gap-2">
+                    <Link to={'/login'}><button className="btn font-bold sm:block hidden text-lg">Login</button></Link>
+
+                    <Link to={'/register'}><button className="btn font-bold sm:block hidden text-lg">Register</button></Link>
+
+                    <div className="dropdown">
+                        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                            <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-7 w-7"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M4 6h16M4 12h8m-8 6h16" />
+                            </svg>
+                        </div>
+                        
+                        <ul tabIndex={0}
+                        className="right-2 py-4 menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                            {links}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </>
     );
 };
 
