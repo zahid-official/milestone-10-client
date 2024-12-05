@@ -6,11 +6,13 @@ import AddVisa from "../Components/AddVisa/AddVisa";
 import MyApplications from "../Components/MyApplications/MyApplications";
 import Login from "../Components/Auth/Login";
 import Register from "../Components/Auth/Register";
+import Error from "../Components/Error";
 
 const Router = createBrowserRouter([
   {
     path: "/",
     element: <Layout></Layout>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
