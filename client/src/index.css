@@ -7,3 +7,58 @@
 body{
     font-family: "Josefin Sans", sans-serif;
 }
+
+a.active{
+    color: white !important;
+    background-color: #45a735 !important;
+}
+a.active:hover span{
+    z-index: 10;
+    color: white;
+}
+
+a.active,
+.custom-effect,
+.custom-effect-nav{
+    position: relative;
+    overflow: hidden;
+    background-color: #45a735;
+    color: white;
+    border: none;
+
+}
+.custom-effect-nav{
+    color: black;
+    border-radius: 8px;
+    background-color: transparent;
+}
+
+a.active::after,
+.custom-effect::after,
+.custom-effect-nav::after{
+    content: '';
+    background-color: #28791c;
+    position: absolute;
+    height: 103%;
+    width: 101%;
+    left: -1;
+    bottom: -103%;
+    border-radius: 90%;
+    transition: all ease .5s;
+}
+a.active:hover::after,
+.custom-effect:hover::after,
+.custom-effect-nav:hover::after{
+    bottom: -1%;
+    border-radius: 0;
+}
+
+
+
+
+
+
+
+
+
+
