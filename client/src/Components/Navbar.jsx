@@ -28,10 +28,16 @@ const Navbar = () => {
       <div className="divider divider-start sm:hidden m-0"></div>
 
       <li className="text-lg font-bold sm:hidden custom-effect-nav">
-        <NavLink to={"/login"} className={"z-10 hover:text-white"}> <span>Login</span></NavLink>
+        <NavLink to={"/login"} className={"z-10 hover:text-white"}>
+          {" "}
+          <span>Login</span>
+        </NavLink>
       </li>
       <li className="text-lg font-bold sm:hidden custom-effect-nav">
-        <NavLink to={"/register"} className={"z-10 hover:text-white"}> <span>Register</span>Register</NavLink>
+        <NavLink to={"/register"} className={"z-10 hover:text-white"}>
+          {" "}
+          <span>Register</span>Register
+        </NavLink>
       </li>
     </>
   );
@@ -49,17 +55,19 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end gap-2">
-          <Link to={"/login"}>
-            <button className="btn hover:bg-[#45a735] text-lg bold sm:block hidden custom-effect">
-              <span className="z-10">Login</span>
-            </button>
-          </Link>
+          <div className="sm:flex gap-2.5  hidden">
+            <Link to={"/login"}>
+              <button className="btn hover:bg-[#45a735] text-lg bold custom-effect">
+                <span className="z-10">Login</span>
+              </button>
+            </Link>
 
-          <Link to={"/register"}>
-            <button className="btn hover:bg-[#45a735] text-lg bold sm:block hidden custom-effect">
-              <span className="z-10">Register</span>
-            </button>
-          </Link>
+            <Link to={"/register"}>
+              <button className="btn hover:bg-[#45a735] text-lg font-bold custom-effect">
+                <span className="z-10">Register</span>
+              </button>
+            </Link>
+          </div>
 
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -81,7 +89,7 @@ const Navbar = () => {
 
             <ul
               tabIndex={0}
-              className="right-2 py-4 menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow gap-2"
+              className="z-20 right-2 py-4 menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow gap-2"
             >
               {links}
             </ul>

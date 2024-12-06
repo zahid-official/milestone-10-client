@@ -13,7 +13,7 @@ const Banner = () => {
     <>
       <Swiper
         loop={true}
-        spaceBetween={30}
+        spaceBetween={40}
         // effect={"fade"}
         autoplay={{
           delay: 3500,
@@ -27,7 +27,7 @@ const Banner = () => {
       >
         {/* slider-01 */}
         <SwiperSlide>
-          <div className="pb-16  hero sm:py-12 py-3 sm:rounded-badge rounded-2xl text-[#034833] bg-[url(/assets/6.bg.svg)] bg-bottom">
+          <div className="pb-16 hero sm:py-12 py-3 sm:rounded-badge rounded-2xl text-[#034833] bg-[url(/assets/6.bg.svg)] bg-bottom">
             <div className="hero-content gap-10 flex-col lg:flex-row-reverse">
               <div className="flex-1 flex justify-center items-center rounded-3xl ">
                 <div className="border-[6px] border-[#83cd20] rounded-3xl overflow-hidden">
@@ -67,8 +67,8 @@ const Banner = () => {
                     </defs>
                   </svg>
                 </div>
-                <h1 className="sm:text-7xl text-5xl font-bold sm:leading-[72px] tracking-tight">
-                  Visa Immigration for a Brighter You Future.
+                <h1 className="sm:text-7xl text-4xl font-bold sm:leading-[72px] tracking-tight">
+                  Immigration for a Brighter You Future.
                 </h1>
                 <button className="btn hover:bg-[#45a735] mt-4 text-lg font-semibold custom-effect">
                   <span className="z-10">Get Started</span>
@@ -120,7 +120,7 @@ const Banner = () => {
                     </defs>
                   </svg>
                 </div>
-                <h1 className="sm:text-7xl text-5xl font-bold sm:leading-[72px] tracking-tight">
+                <h1 className="sm:text-7xl text-4xl font-bold sm:leading-[72px] tracking-tight">
                   Visa Made Easy Dreams Made Possible.
                 </h1>
                 <button className="btn hover:bg-[#45a735] mt-4 text-lg font-semibold custom-effect">
@@ -131,7 +131,7 @@ const Banner = () => {
           </div>
         </SwiperSlide>
 
-        {/* slider-01 */}
+        {/* slider-03 */}
         <SwiperSlide>
           <div className="pb-16  hero sm:py-12 py-3 sm:rounded-badge rounded-2xl text-[#034833] bg-[url(/assets/6.bg.svg)] bg-bottom">
             <div className="hero-content gap-10 flex-col lg:flex-row-reverse">
@@ -173,7 +173,7 @@ const Banner = () => {
                     </defs>
                   </svg>
                 </div>
-                <h1 className="sm:text-7xl text-5xl font-bold sm:leading-[72px] tracking-tight">
+                <h1 className="sm:text-7xl text-4xl font-bold sm:leading-[72px] tracking-tight">
                   Immigration & Visa Solutions The Easy Way
                 </h1>
                 <button className="btn hover:bg-[#45a735] mt-4 text-lg font-semibold custom-effect">
