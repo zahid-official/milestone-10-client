@@ -121,8 +121,7 @@ const VisaInfo = () => {
             />
 
             {/* row-03 */}
-            <div className="flex gap-4 sm:flex-nowrap flex-wrap">
-
+            <div className="flex gap-4 sm:flex-nowrap flex-wrap ic">
                 {/* checkbox-01 */}
               <div className="form-control">
                 <label className="label cursor-pointer gap-2">

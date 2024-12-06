@@ -57,14 +57,14 @@ const Navbar = () => {
         <div className="navbar-end gap-2">
           <div className="sm:flex gap-2.5  hidden">
             <Link to={"/login"}>
-              <button className="btn hover:bg-[#45a735] text-lg bold custom-effect">
-                <span className="z-10">Login</span>
+              <button className="btn hover:bg-[#45a735] text-lg font-bold custom-effect">
+                <span className="z-10">Sign In</span>
               </button>
             </Link>
 
             <Link to={"/register"}>
               <button className="btn hover:bg-[#45a735] text-lg font-bold custom-effect">
-                <span className="z-10">Register</span>
+                <span className="z-10">Sign Up</span>
               </button>
             </Link>
           </div>
