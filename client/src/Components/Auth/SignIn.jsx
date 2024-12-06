@@ -1,7 +1,18 @@
+import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import ContextAPI from "./ContextAPI";
+import { toast } from "react-toastify";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const SignIn = () => {
+  // useContext
+  const { login, setUsers, google} = useContext(ContextAPI);
+  // useLocation
+  const location = useLocation();
+  // useNavigate
+  const navigate = useNavigate();
+
   // handleSubmit
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -9,7 +20,29 @@ const SignIn = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+
+    // login
+    login(email, password)
+      .then((result) => {
+        setUsers(result.user);
+        toast.success("Sign In Successfully");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => toast.error(error.message));
   };
+
+  // google
+  const handleGoogle = () => {
+    const googleProvider = new GoogleAuthProvider();
+    google(googleProvider)
+    .then(result => {
+      setUsers(result.user);
+      toast.success('Sign In Successfully');
+      navigate(location?.state ? location.state : "/");
+    })
+    .catch((error) => toast.error(error.message))
+  }
+
   return (
     <>
       <div className="card bg-white w-full max-w-xl mx-auto py-20 sm:px-12 px-6">
@@ -46,6 +79,11 @@ const SignIn = () => {
                 className="input input-bordered"
                 required
               />
+              <label className="label">
+                <span className="label-text-alt link link-hover pt-4">
+                  Forgot password?
+                </span>
+              </label>
             </div>
 
             {/* submit */}
@@ -58,6 +96,7 @@ const SignIn = () => {
               <div className="divider py-5">or sign In with Google</div>
               <button
                 type="button"
+                onClick={handleGoogle}
                 className="btn hover:bg-[#1a394e] bg-[#254760] text-white text-lg font-bold h-14"
               >
                 <FcGoogle size={30} />

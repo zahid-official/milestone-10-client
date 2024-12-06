@@ -54,7 +54,9 @@ a.active:hover::after,
     border-radius: 0;
 }
 
-
+.profilePhoto:hover ul{
+    display: block;
+}
 
 
 

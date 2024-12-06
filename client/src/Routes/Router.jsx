@@ -7,6 +7,8 @@ import MyApplications from "../Components/MyApplications/MyApplications";
 import Login from "../Components/Auth/Login";
 import Register from "../Components/Auth/Register";
 import Error from "../Components/Error";
+import PrivateRouter from "./PrivateRouter";
+import MyVisas from "../Components/MyVisas/Myvisas";
 
 const Router = createBrowserRouter([
   {
@@ -24,11 +26,27 @@ const Router = createBrowserRouter([
       },
       {
         path: "/addVisa",
-        element: <AddVisa></AddVisa>,
+        element: (
+          <PrivateRouter>
+            <AddVisa></AddVisa>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/myVisas",
+        element: (
+          <PrivateRouter>
+            <MyVisas></MyVisas>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/myApplications",
-        element: <MyApplications></MyApplications>,
+        element: (
+          <PrivateRouter>
+            <MyApplications></MyApplications>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/login",

@@ -1,18 +1,70 @@
+import { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import ContextAPI from "./ContextAPI";
+import { toast } from "react-toastify";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const SignUp = () => {
+  // useContent
+  const { register, profile, setUsers, google } = useContext(ContextAPI);
+  // state for password
+  const [strongPassword, setStrongPassword] = useState("");
+  // useLocation
+  const location = useLocation();
+  // useNavigate
+  const navigate = useNavigate();
+
   // handleSubmit
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // input data
     const form = event.target;
     const name = form.name.value;
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
 
+    // password validation
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    setStrongPassword("");
+    if (!passwordRegex.test(password)) {
+      setStrongPassword(
+        "Must have an Uppercase & Lowercase letter and Length must be at least 6 character"
+      );
+      return;
+    }
+
+    // register
+    register(email, password)
+      .then((result) => {
+        setUsers(result.user);
+
+        // profile update
+        profile({ displayName: name, photoURL: photo })
+          .then(() => {
+            setUsers({ ...result.user, displayName: name, photoURL: photo });
+            toast.success("Sign Up Successfully");
+            navigate(location?.state ? location.state : "/");
+          })
+          .catch((error) => toast.error(error.message))
+      })
+      .catch((error) => toast.error(error.message))
   };
+
+  // handleGoogle
+  const handleGoogle = () => {
+    const googleProvider = new GoogleAuthProvider();
+    google(googleProvider)
+      .then((result) => {
+        setUsers(result.user);
+        toast.success("Sign Up Successfully");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => toast.error(error.message))
+  };
+
   return (
     <>
       <div className="card bg-white w-full max-w-2xl mx-auto py-20 sm:px-12 px-6">
@@ -77,6 +129,15 @@ const SignUp = () => {
                 className="input input-bordered"
                 required
               />
+
+              {/* strong password */}
+              <label className="label">
+                {strongPassword && (
+                  <span className="label-text mt-3 text-red-600">
+                    {strongPassword}
+                  </span>
+                )}
+              </label>
             </div>
 
             {/* submit */}
@@ -89,6 +150,7 @@ const SignUp = () => {
               <div className="divider py-5">or sign up with Google</div>
               <button
                 type="button"
+                onClick={handleGoogle}
                 className="btn hover:bg-[#1a394e] bg-[#254760] text-white text-lg font-bold h-14"
               >
                 <FcGoogle size={30} />
