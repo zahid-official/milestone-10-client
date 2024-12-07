@@ -7,6 +7,33 @@ const VisaInfo = () => {
   // state for requiredDocuments
   const [requiredDocuments, setRequiredDocuments] = useState({});
 
+  // handleValidPassport
+  const handleValidPassport = (event) => {
+    const checkbox = event.target;
+    const validPassport = checkbox.checked ? checkbox.value : null;
+    setRequiredDocuments({ ...requiredDocuments, validPassport });
+  };
+
+  // handleVisaForm
+  const handleVisaForm = (event) => {
+    const checkbox = event.target;
+    const visaForm = checkbox.checked ? checkbox.value : null;
+    setRequiredDocuments({ ...requiredDocuments, visaForm });
+  };
+
+  // handleRecentPhotograph
+  const handleRecentPhotograph = (event) => {
+    const checkbox = event.target;
+    const recentPhotograph = checkbox.checked ? checkbox.value : null;
+    setRequiredDocuments({ ...requiredDocuments, recentPhotograph });
+  };
+
+
+
+
+
+
+
   // handleSubmit
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -40,29 +67,26 @@ const VisaInfo = () => {
       description,
     };
 
-    console.log(addVisaData);
+    console.log(addVisaData)
+
+    // create date in mongoDB
+    fetch('http://localhost:3000/visa', {
+      method: "POST",
+      headers: {
+        'content-type' : 'application/json',
+      },
+      body : JSON.stringify(addVisaData),
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      toast.success("Visa Added Successfully");
+    })
+
+    
   };
 
-  // handleValidPassport
-  const handleValidPassport = (event) => {
-    const checkbox = event.target;
-    const validPassport = checkbox.checked ? checkbox.value : null;
-    setRequiredDocuments({ ...requiredDocuments, validPassport });
-  };
-
-  // handleVisaForm
-  const handleVisaForm = (event) => {
-    const checkbox = event.target;
-    const visaForm = checkbox.checked ? checkbox.value : null;
-    setRequiredDocuments({ ...requiredDocuments, visaForm });
-  };
-
-  // handleRecentPhotograph
-  const handleRecentPhotograph = (event) => {
-    const checkbox = event.target;
-    const recentPhotograph = checkbox.checked ? checkbox.value : null;
-    setRequiredDocuments({ ...requiredDocuments, recentPhotograph });
-  };
+  
 
   return (
     <div className="px-5 sm:w-11/12 mx-auto mt-8">
@@ -228,7 +252,7 @@ const VisaInfo = () => {
                   <input
                     type="checkbox"
                     className="checkbox"
-                    value={"Visa Form"}
+                    value={"Visa Application Form"}
                     onChange={handleVisaForm}
                     required
                   />
@@ -242,7 +266,7 @@ const VisaInfo = () => {
                   <input
                     type="checkbox"
                     className="checkbox"
-                    value={"Recent Photograph"}
+                    value={"Recent Passport Size Photograph"}
                     onChange={handleRecentPhotograph}
                     required
                   />

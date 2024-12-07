@@ -9,6 +9,7 @@ import Register from "../Components/Auth/Register";
 import Error from "../Components/Error";
 import PrivateRouter from "./PrivateRouter";
 import MyVisas from "../Components/MyVisas/Myvisas";
+import VisaDetails from "../Components/AllVisas/VisaDetails";
 
 const Router = createBrowserRouter([
   {
@@ -23,6 +24,11 @@ const Router = createBrowserRouter([
       {
         path: "/allVisas",
         element: <AllVisas></AllVisas>,
+        loader: () => fetch('http://localhost:3000/visa'),
+      },
+      {
+        path: "/visaDetails/:id",
+        element: <VisaDetails></VisaDetails>,
       },
       {
         path: "/addVisa",

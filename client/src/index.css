@@ -20,6 +20,7 @@ a.active:hover span{
 
 a.active,
 .custom-effect,
+.custom-effect2,
 .custom-effect-nav{
     position: relative;
     overflow: hidden;
@@ -34,8 +35,13 @@ a.active,
     background-color: transparent;
 }
 
+.custom-effect2{
+    background-color: #898d4fbe;
+}
+
 a.active::after,
 .custom-effect::after,
+.custom-effect2::after,
 .custom-effect-nav::after{
     content: '';
     background-color: #28791c;
@@ -47,11 +53,25 @@ a.active::after,
     border-radius: 90%;
     transition: all ease .5s;
 }
+
+.custom-effect2::after{
+    background-color: #6d703bbe;
+}
+
 a.active:hover::after,
 .custom-effect:hover::after,
+.custom-effect2:hover::after,
 .custom-effect-nav:hover::after{
     bottom: -1%;
     border-radius: 0;
+}
+
+.custom-card{
+    transition: .5s;
+}
+.custom-card:hover{
+    box-shadow: 10px 8px rgba(192, 192, 192, 0.336);
+    transform: translateY(-20px);
 }
 
 .profilePhoto:hover ul{
