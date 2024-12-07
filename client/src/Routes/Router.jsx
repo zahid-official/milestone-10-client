@@ -29,6 +29,7 @@ const Router = createBrowserRouter([
       {
         path: "/visaDetails/:id",
         element: <VisaDetails></VisaDetails>,
+        loader: ({params}) => fetch(`http://localhost:3000/visaDetails/${params.id}`)
       },
       {
         path: "/addVisa",

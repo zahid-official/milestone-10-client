@@ -31,7 +31,7 @@ const DisplayVisa = ({ visa }) => {
           <p className="font-semibold text-lg">Fee: ${visaFee}</p>
           <p></p>
           <div className="card-actions mt-5">
-            <Link to={`/visaDetails/:${id}`} className="w-full">
+            <Link to={`/visaDetails/${id}`} className="w-full">
               <button className="btn w-full hover:bg-[#898d4fbe] text-lg font-bold custom-effect2">
                 <span className="z-10">See Details</span>
               </button>

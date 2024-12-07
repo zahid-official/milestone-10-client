@@ -28,12 +28,6 @@ const VisaInfo = () => {
     setRequiredDocuments({ ...requiredDocuments, recentPhotograph });
   };
 
-
-
-
-
-
-
   // handleSubmit
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -47,7 +41,6 @@ const VisaInfo = () => {
     const applicationMethod = event.target.applicationMethod.value;
     const ageRestriction = event.target.ageRestriction.value;
     const description = event.target.textarea.value;
-    
 
     // validation number input
     if (visaFee < 0 || ageRestriction < 0) {
@@ -67,26 +60,22 @@ const VisaInfo = () => {
       description,
     };
 
-    console.log(addVisaData)
+    console.log(addVisaData);
 
     // create date in mongoDB
-    fetch('http://localhost:3000/visa', {
+    fetch("http://localhost:3000/visa", {
       method: "POST",
       headers: {
-        'content-type' : 'application/json',
+        "content-type": "application/json",
       },
-      body : JSON.stringify(addVisaData),
+      body: JSON.stringify(addVisaData),
     })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      toast.success("Visa Added Successfully");
-    })
-
-    
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        toast.success("Visa Added Successfully");
+      });
   };
-
-  
 
   return (
     <div className="px-5 sm:w-11/12 mx-auto mt-8">
@@ -103,7 +92,7 @@ const VisaInfo = () => {
 
               <div>
                 <h2 className="sm:text-4xl text-3xl font-bold">
-                  Visa Infomation
+                  Visa Infomations &
                 </h2>
                 <p className="font-semibold">
                   Please fill out all visa details here.
@@ -149,15 +138,24 @@ const VisaInfo = () => {
 
               <select
                 className="select select-bordered w-full text-base font-semibold"
-                name="processingTime"
+                name="applicationMethod"
                 required="required"
               >
                 <option value="" disabled selected>
-                  Processing Time
+                  Application Method
                 </option>
-                <option value="3 working days">Normal (Guaranteed within 3 working days)</option>
-                <option value="2 working days">Urgent (Guaranteed within 2 working days)</option>
-                <option value="1 working day">Super Urgent (Within 1 working day)</option>
+                <option value="Online Visa Application">
+                  Online Visa Application
+                </option>
+                <option value="Visa Application Center">
+                  Visa Application Center
+                </option>
+                <option value="Government Visa Application">
+                  Government Visa Application
+                </option>
+                <option value="Embassy/Consulate Application">
+                  Embassy/Consulate Application
+                </option>
               </select>
             </div>
 
@@ -191,34 +189,21 @@ const VisaInfo = () => {
 
             {/* row-01 */}
             <div className="flex gap-4 md:flex-row flex-col">
-              <select
-                className="select select-bordered w-full text-base font-semibold"
-                required="required"
+              <input
+                type="text"
                 name="validatiy"
-              >
-                <option value="" disabled selected>
-                  Validity
-                </option>
-                <option value="30-90 days">30-90 days</option>
-                <option value="3-6 months">3-6 months</option>
-                <option value="6-9 months">6-9 months</option>
-                <option value="1-2 years">1-2 years</option>
-                <option value="1-5 years">1-5 years</option>
-              </select>
+                placeholder="Validatiy"
+                className="input input-bordered w-full text-base font-semibold"
+                required
+              />
 
-              <select
-                className="select select-bordered w-full text-base font-semibold"
-                name="applicationMethod"
-                required="required"
-              >
-                <option value="" disabled selected>
-                  Application Method
-                </option>
-                <option value="Online Visa Application">Online Visa Application</option>
-                <option value="Visa Application Center">Visa Application Center</option>
-                <option value="Government Visa Application">Government Visa Application</option>
-                <option value="Embassy/Consulate Application">Embassy/Consulate Application</option>
-              </select>
+              <input
+                type="text"
+                name="processingTime"
+                placeholder="Processing Time"
+                className="input input-bordered w-full text-base font-semibold"
+                required
+              />
             </div>
 
             {/* row-02 */}
@@ -227,7 +212,6 @@ const VisaInfo = () => {
               name="ageRestriction"
               placeholder="Age Restriction (Only Number)"
               className="input input-bordered w-full text-base font-semibold"
-              required
             />
 
             {/* row-03 */}
