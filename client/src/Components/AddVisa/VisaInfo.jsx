@@ -1,10 +1,72 @@
+import { useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { IoDocumentTextOutline } from "react-icons/io5";
+import { toast } from "react-toastify";
 
 const VisaInfo = () => {
+  // state for requiredDocuments
+  const [requiredDocuments, setRequiredDocuments] = useState({});
+
+  // handleSubmit
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const countryName = event.target.countryName.value;
+    const countryFlag = event.target.countryFlag.value;
+    const visaType = event.target.visaType.value;
+    const processingTime = event.target.processingTime.value;
+    const visaFee = event.target.visaFee.value;
+    const validatiy = event.target.validatiy.value;
+    const applicationMethod = event.target.applicationMethod.value;
+    const ageRestriction = event.target.ageRestriction.value;
+    const description = event.target.textarea.value;
+    
+
+    // validation number input
+    if (visaFee < 0 || ageRestriction < 0) {
+      return toast.error("You Provide a Invalid Number in Number Input Field.");
+    }
+
+    const addVisaData = {
+      countryName,
+      countryFlag,
+      visaType,
+      processingTime,
+      visaFee,
+      validatiy,
+      applicationMethod,
+      ageRestriction,
+      requiredDocuments,
+      description,
+    };
+
+    console.log(addVisaData);
+  };
+
+  // handleValidPassport
+  const handleValidPassport = (event) => {
+    const checkbox = event.target;
+    const validPassport = checkbox.checked ? checkbox.value : null;
+    setRequiredDocuments({ ...requiredDocuments, validPassport });
+  };
+
+  // handleVisaForm
+  const handleVisaForm = (event) => {
+    const checkbox = event.target;
+    const visaForm = checkbox.checked ? checkbox.value : null;
+    setRequiredDocuments({ ...requiredDocuments, visaForm });
+  };
+
+  // handleRecentPhotograph
+  const handleRecentPhotograph = (event) => {
+    const checkbox = event.target;
+    const recentPhotograph = checkbox.checked ? checkbox.value : null;
+    setRequiredDocuments({ ...requiredDocuments, recentPhotograph });
+  };
+
   return (
     <div className="px-5 sm:w-11/12 mx-auto mt-8">
-      <form className="flex flex-col gap-10">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-10">
         {/* top */}
         <div className="flex items-center justify-center xl:flex-row flex-col gap-10">
           {/* leftside */}
@@ -16,7 +78,9 @@ const VisaInfo = () => {
               </div>
 
               <div>
-                <h2 className="sm:text-4xl text-3xl font-bold">Visa Infomation</h2>
+                <h2 className="sm:text-4xl text-3xl font-bold">
+                  Visa Infomation
+                </h2>
                 <p className="font-semibold">
                   Please fill out all visa details here.
                 </p>
@@ -27,6 +91,7 @@ const VisaInfo = () => {
             <div className="flex gap-4 md:flex-row flex-col ">
               <input
                 type="text"
+                name="countryName"
                 placeholder="Country Name"
                 className="input input-bordered w-full text-base font-semibold"
                 required
@@ -34,6 +99,7 @@ const VisaInfo = () => {
 
               <input
                 type="text"
+                name="countryFlag"
                 placeholder="Upload Country Flag"
                 className="input input-bordered w-full text-base font-semibold"
                 required
@@ -42,30 +108,39 @@ const VisaInfo = () => {
 
             {/* row-02 */}
             <div className="flex gap-4 md:flex-row flex-col">
-              <select className="select select-bordered w-full text-base font-semibold">
-                <option disabled selected>
+              <select
+                className="select select-bordered w-full text-base font-semibold"
+                required="required"
+                name="visaType"
+              >
+                <option value="" disabled selected>
                   Visa Type
                 </option>
-                <option>Tourist visa</option>
-                <option>Student visa</option>
-                <option>Official visa</option>
-                <option>Medical visa</option>
-                <option>Conference visa</option>
+                <option value="Tourist Visa">Tourist Visa</option>
+                <option value="Student Visa">Student Visa</option>
+                <option value="Official Visa">Official Visa</option>
+                <option value="Medical Visa">Medical Visa</option>
+                <option value="Conference visa">Conference visa</option>
               </select>
 
-              <select className="select select-bordered w-full text-base font-semibold">
-                <option disabled selected>
+              <select
+                className="select select-bordered w-full text-base font-semibold"
+                name="processingTime"
+                required="required"
+              >
+                <option value="" disabled selected>
                   Processing Time
                 </option>
-                <option>Normal (Guaranteed within 3 working days)</option>
-                <option>Urgent (Guaranteed within 2 working days)</option>
-                <option>Super Urgent (Within 1 working day)</option>
+                <option value="3 working days">Normal (Guaranteed within 3 working days)</option>
+                <option value="2 working days">Urgent (Guaranteed within 2 working days)</option>
+                <option value="1 working day">Super Urgent (Within 1 working day)</option>
               </select>
             </div>
 
             {/* row-03 */}
             <input
               type="number"
+              name="visaFee"
               placeholder="Visa Fee (Only Number)"
               className="input input-bordered w-full text-base font-semibold"
               required
@@ -81,7 +156,9 @@ const VisaInfo = () => {
               </div>
 
               <div>
-                <h2 className="sm:text-4xl text-3xl font-bold">Required Documents</h2>
+                <h2 className="sm:text-4xl text-3xl font-bold">
+                  Required Documents
+                </h2>
                 <p className="font-semibold">
                   Please fill out all documents details here.
                 </p>
@@ -90,31 +167,40 @@ const VisaInfo = () => {
 
             {/* row-01 */}
             <div className="flex gap-4 md:flex-row flex-col">
-              <select className="select select-bordered w-full text-base font-semibold">
-                <option disabled selected>
+              <select
+                className="select select-bordered w-full text-base font-semibold"
+                required="required"
+                name="validatiy"
+              >
+                <option value="" disabled selected>
                   Validity
                 </option>
-                <option>30-90 days</option>
-                <option>3-6 months</option>
-                <option>6-9 months</option>
-                <option>1-2 years</option>
-                <option>1-5 years</option>
+                <option value="30-90 days">30-90 days</option>
+                <option value="3-6 months">3-6 months</option>
+                <option value="6-9 months">6-9 months</option>
+                <option value="1-2 years">1-2 years</option>
+                <option value="1-5 years">1-5 years</option>
               </select>
 
-              <select className="select select-bordered w-full text-base font-semibold">
-                <option disabled selected>
+              <select
+                className="select select-bordered w-full text-base font-semibold"
+                name="applicationMethod"
+                required="required"
+              >
+                <option value="" disabled selected>
                   Application Method
                 </option>
-                <option>Online Visa Application</option>
-                <option>Visa Application Center</option>
-                <option>Government Visa Application</option>
-                <option>Embassy/Consulate Application</option>
+                <option value="Online Visa Application">Online Visa Application</option>
+                <option value="Visa Application Center">Visa Application Center</option>
+                <option value="Government Visa Application">Government Visa Application</option>
+                <option value="Embassy/Consulate Application">Embassy/Consulate Application</option>
               </select>
             </div>
 
             {/* row-02 */}
             <input
               type="number"
+              name="ageRestriction"
               placeholder="Age Restriction (Only Number)"
               className="input input-bordered w-full text-base font-semibold"
               required
@@ -122,31 +208,47 @@ const VisaInfo = () => {
 
             {/* row-03 */}
             <div className="flex gap-4 sm:flex-nowrap flex-wrap ic">
-                {/* checkbox-01 */}
+              {/* checkbox-01 */}
               <div className="form-control">
                 <label className="label cursor-pointer gap-2">
-                  <input type="checkbox" defaultChecked className="checkbox" />
+                  <input
+                    type="checkbox"
+                    className="checkbox"
+                    value={"Valid Passport"}
+                    onChange={handleValidPassport}
+                    required
+                  />
                   <span className="label-text">Valid Passport</span>
                 </label>
               </div>
 
-                {/* checkbox-02 */}
+              {/* checkbox-02 */}
               <div className="form-control">
                 <label className="label cursor-pointer gap-2">
-                  <input type="checkbox" defaultChecked className="checkbox" />
+                  <input
+                    type="checkbox"
+                    className="checkbox"
+                    value={"Visa Form"}
+                    onChange={handleVisaForm}
+                    required
+                  />
                   <span className="label-text">Visa Form</span>
                 </label>
               </div>
 
-                {/* checkbox-03 */}
+              {/* checkbox-03 */}
               <div className="form-control">
                 <label className="label cursor-pointer gap-2">
-                  <input type="checkbox" defaultChecked className="checkbox" />
+                  <input
+                    type="checkbox"
+                    className="checkbox"
+                    value={"Recent Photograph"}
+                    onChange={handleRecentPhotograph}
+                    required
+                  />
                   <span className="label-text">Recent Photograph</span>
                 </label>
               </div>
-
-
             </div>
           </div>
         </div>
@@ -154,9 +256,11 @@ const VisaInfo = () => {
         {/* bottom */}
         <div className="sm:px-10 px-6 sm:py-16 py-8 bg-white rounded-3xl text-center">
           <textarea
-            placeholder="Description..."
             rows={"4"}
+            name="textarea"
+            placeholder="Description..."
             className="textarea textarea-bordered textarea-lg w-full"
+            required
           ></textarea>
 
           <button

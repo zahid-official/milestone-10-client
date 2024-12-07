@@ -81,7 +81,7 @@ const Navbar = () => {
           {users?.email ? (
             <div className="relative rounded-full profilePhoto">
               <img
-                src={users?.photoURL}
+                src={`${users?.photoURL}`}
                 alt="profile photo"
                 className="h-12 w-12 rounded-[50%] cursor-pointer object-cover"
               />
