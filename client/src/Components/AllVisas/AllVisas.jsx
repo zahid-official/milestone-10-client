@@ -12,7 +12,7 @@ const AllVisas = () => {
         subHeading={"All Visas"}
       ></PageTitle>
 
-      <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-10 w-11/12 mx-auto px-4 sm:px-20 pt-10 pb-36 rounded-[60px]">
+      <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-10 px-4 sm:px-20 pt-10 pb-36 rounded-[60px]">
         {data.map((visa) => (
           <DisplayVisa key={visa._id} visa={visa}></DisplayVisa>
         ))}
