@@ -1,12 +1,10 @@
 import { useLoaderData } from "react-router-dom";
 import PageTitle from "../AddVisa/PageTitle";
 import { toast } from "react-toastify";
-import { useContext } from "react";
-import ContextAPI from "../Auth/ContextAPI";
 
 const VisaDetails = () => {
-  // useContext
-  const {setApplicant} = useContext(ContextAPI);
+
+
   const data = useLoaderData();
   const {
     countryFlag,
@@ -65,7 +63,6 @@ const VisaDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setApplicant(applicantEmail);
         toast.success("Visa Application Submitted");
       });
 

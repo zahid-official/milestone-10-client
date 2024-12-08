@@ -65,7 +65,6 @@ const VisaInfo = () => {
       userEmail,
     };
 
-    console.log(addVisaData);
 
     // create visaData in mongoDB
     fetch("http://localhost:3000/visa", {
