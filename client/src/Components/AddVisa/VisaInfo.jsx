@@ -216,6 +216,7 @@ const VisaInfo = () => {
               name="ageRestriction"
               placeholder="Age Restriction (Only Number)"
               className="input input-bordered w-full text-base font-semibold"
+              required
             />
 
             {/* row-03 */}

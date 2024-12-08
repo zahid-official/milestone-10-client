@@ -2,19 +2,23 @@
 
 import { Link } from "react-router-dom";
 
-const DisplayVisa = ({ visa }) => {
-  const {
-    _id: id,
-    countryName,
-    countryFlag,
-    visaType,
-    visaFee,
-    validatiy,
-  } = visa;
 
-  return (
-    <div className="h-full">
-      <div className="card bg-[#eff2e6] max-w-80 mx-auto pt-5 pb-16 px-2 custom-card h-full">
+const Card = ({card}) => {
+
+    const {
+        _id: id,
+        countryName,
+        countryFlag,
+        visaType,
+        visaFee,
+        validatiy,
+        processingTime,
+        applicationMethod,
+      } = card;
+    
+    return (
+        <div className="h-full">
+      <div className="card bg-[#eff2e6] mx-auto pt-5 pb-16 px-2 custom-card h-full">
         <div>
           <div className="h-16 w-16 mt-8 ml-10">
             <img
@@ -28,8 +32,11 @@ const DisplayVisa = ({ visa }) => {
           <div>
             <h2 className="card-title text-2xl font-bold">{countryName}</h2>
             <p className="font-semibold text-lg">Type: {visaType}</p>
-            <p className="font-semibold text-lg">Validity: {validatiy}</p>
             <p className="font-semibold text-lg">Fee: ${visaFee}</p>
+            <br />
+            <p className="font-semibold text-lg">Validity: {validatiy}</p>
+            <p className="font-semibold text-lg">Processing Time: {processingTime}</p>
+            <p className="font-semibold text-lg">Application Method: {applicationMethod}</p>
           </div>
           <div className="card-actions mt-5">
             <Link to={`/visaDetails/${id}`} className="w-full">
@@ -41,7 +48,7 @@ const DisplayVisa = ({ visa }) => {
         </div>
       </div>
     </div>
-  );
+    );
 };
 
-export default DisplayVisa;
+export default Card;

@@ -53,8 +53,8 @@ const ApplicationDetails = ({ application, loadedData, setLoadedData }) => {
       <div className="bg-white h-full rounded-3xl">
         <div className="hero sm:py-20 py-14 h-full">
           <div className="hero-content gap-10 flex-col justify-between h-full w-full">
-            <div className="flex-1 flex justify-center ">
-              <img src={countryFlag} />
+            <div className="flex-1 flex justify-center">
+              <img src={countryFlag} className="sm:max-w-sm" />
             </div>
 
             <div className="flex-1 flex flex-col justify-between px-4 space-y-1.5">
@@ -105,7 +105,7 @@ const ApplicationDetails = ({ application, loadedData, setLoadedData }) => {
 
               <button
                 onClick={handleDelete}
-                className="btn font-bold px-12 h-14 hover:bg-[#45a735] text-lg custom-effect"
+                className="btn font-bold px-12 h-14 hover:bg-[#dd3333] text-lg custom-effect3"
               >
                 <span className="z-10">
                   Cencel <span className="sm:inline hidden">Application</span>
