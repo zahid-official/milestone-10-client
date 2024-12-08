@@ -78,6 +78,8 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end gap-2">
+          {/* darkmode */}
+          
           {users?.email ? (
             <div className="relative rounded-full profilePhoto">
               <img

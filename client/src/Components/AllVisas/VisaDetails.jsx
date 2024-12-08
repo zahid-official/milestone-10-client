@@ -3,8 +3,6 @@ import PageTitle from "../AddVisa/PageTitle";
 import { toast } from "react-toastify";
 
 const VisaDetails = () => {
-
-
   const data = useLoaderData();
   const {
     countryFlag,
@@ -27,7 +25,6 @@ const VisaDetails = () => {
   const month = String(currentDate.getMonth() + 1).padStart(2, "0");
   const day = String(currentDate.getDate()).padStart(2, "0");
   const formattedDate = `${year}-${month}-${day}`;
-
 
   // handleSubmit
   const handleSubmit = (event) => {
@@ -149,6 +146,22 @@ const VisaDetails = () => {
           <form onSubmit={handleSubmit}>
             <h2 className="text-3xl mb-4 font-bold">Apply for Visa</h2>
             <div className="space-y-2.5 mb-10">
+              
+              {/* email */}
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Logged In Email</span>
+                </label>
+                <input
+                  type="email"
+                  name="applicantEmail"
+                  defaultValue={userEmail}
+                  placeholder="Email"
+                  className="input input-bordered"
+                  disabled
+                />
+              </div>
+
               {/* first name */}
               <div className="form-control">
                 <label className="label">
@@ -172,21 +185,6 @@ const VisaDetails = () => {
                   type="text"
                   name="lastName"
                   placeholder="Last Name"
-                  className="input input-bordered"
-                  required
-                />
-              </div>
-
-              {/* email */}
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Logged In Email</span>
-                </label>
-                <input
-                  type="email"
-                  name="applicantEmail"
-                  defaultValue={userEmail}
-                  placeholder="Email"
                   className="input input-bordered"
                   required
                 />
