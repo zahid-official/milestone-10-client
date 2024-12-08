@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { toast } from "react-toastify";
+import ContextAPI from "../Auth/ContextAPI";
 
 const VisaInfo = () => {
   // state for requiredDocuments
   const [requiredDocuments, setRequiredDocuments] = useState({});
+  const {users} = useContext(ContextAPI);
+
 
   // handleValidPassport
   const handleValidPassport = (event) => {
@@ -41,6 +44,7 @@ const VisaInfo = () => {
     const applicationMethod = event.target.applicationMethod.value;
     const ageRestriction = event.target.ageRestriction.value;
     const description = event.target.textarea.value;
+    const userEmail = users?.email;
 
     // validation number input
     if (visaFee < 0 || ageRestriction < 0) {
@@ -58,11 +62,12 @@ const VisaInfo = () => {
       ageRestriction,
       requiredDocuments,
       description,
+      userEmail,
     };
 
     console.log(addVisaData);
 
-    // create date in mongoDB
+    // create visaData in mongoDB
     fetch("http://localhost:3000/visa", {
       method: "POST",
       headers: {

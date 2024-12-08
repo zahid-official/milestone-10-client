@@ -18,6 +18,9 @@ const AuthProver = ({ children }) => {
   const [users, setUsers] = useState(null);
   // state for loading
   const [loading, setLoading] = useState(true);
+  // state for applicant
+  const [applicant, setApplicant] = useState('');
+ 
 
   // register
   const register = (email, password) => {
@@ -71,7 +74,11 @@ const AuthProver = ({ children }) => {
     google,
     loading,
     setLoading,
+    applicant,
+    setApplicant,
   };
+
+
 
   return (
     <div>

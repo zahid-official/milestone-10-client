@@ -44,7 +44,7 @@ const SignUp = () => {
         // profile update
         profile({ displayName: name, photoURL: photo })
           .then(() => {
-            setUsers({ ...result.user, displayName: name, photoURL: photo });
+            setUsers({...result.user, displayName: name, photoURL: photo });
             toast.success("Sign Up Successfully");
             navigate(location?.state ? location.state : "/");
           })
