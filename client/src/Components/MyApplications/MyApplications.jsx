@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import PageTitle from "../AddVisa/PageTitle";
 import ContextAPI from "../Auth/ContextAPI";
-import DisplayApplications from "./DisplayApplications";
+import ApplicationDetails from "./ApplicationDetails";
 
 const MyApplications = () => {
   // useContext
@@ -35,9 +35,9 @@ const MyApplications = () => {
           subHeading={"My Applications"}
         ></PageTitle>
 
-        <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-10 px-4 sm:px-20 pt-10 pb-36 rounded-[60px]">
+        <div className="grid 2xl:grid-cols-3 lg:grid-cols-2 gap-10 px-4 sm:px-20 pt-10 pb-36 rounded-[60px]">
           {loadedData && loadedData.map((application) => (
-            <DisplayApplications key={application._id} application={application}></DisplayApplications>
+            <ApplicationDetails key={application._id} application={application} loadedData={loadedData} setLoadedData={setLoadedData}></ApplicationDetails>
           ))}
         </div>
       </div>

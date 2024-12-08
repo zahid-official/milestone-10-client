@@ -10,7 +10,6 @@ import Error from "../Components/Error";
 import PrivateRouter from "./PrivateRouter";
 import MyVisas from "../Components/MyVisas/Myvisas";
 import VisaDetails from "../Components/AllVisas/VisaDetails";
-import ApplicationDetails from "../Components/MyApplications/ApplicationDetails";
 
 const Router = createBrowserRouter([
   {
@@ -55,11 +54,6 @@ const Router = createBrowserRouter([
             <MyApplications></MyApplications>
           </PrivateRouter>
         ),
-      },
-      {
-        path: "/applicationDetails/:id",
-        element: <ApplicationDetails></ApplicationDetails>,
-        loader: ({params}) => fetch(`http://localhost:3000/applicationDetails/${params.id}`)
       },
       {
         path: "/login",
