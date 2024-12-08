@@ -67,7 +67,7 @@ const VisaInfo = () => {
 
 
     // create visaData in mongoDB
-    fetch("http://localhost:3000/visa", {
+    fetch("https://server-one-ashen-40.vercel.app/visa", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -216,7 +216,6 @@ const VisaInfo = () => {
               name="ageRestriction"
               placeholder="Age Restriction (Only Number)"
               className="input input-bordered w-full text-base font-semibold"
-              required
             />
 
             {/* row-03 */}

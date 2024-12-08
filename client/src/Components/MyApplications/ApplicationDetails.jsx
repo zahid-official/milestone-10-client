@@ -29,7 +29,7 @@ const ApplicationDetails = ({ application, loadedData, setLoadedData }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/applicationDetails/${id}`, {
+        fetch(`https://server-one-ashen-40.vercel.app/applicationDetails/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

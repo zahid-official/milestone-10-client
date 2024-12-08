@@ -20,7 +20,7 @@ const MyVisaDetails = ({ visa, myVisas, setMyVisas }) => {
 
   // handleUpdateData read
   const handleUpdateData = (uniqueId) => {
-    fetch(`http://localhost:3000/visas/${uniqueId}`)
+    fetch(`https://server-one-ashen-40.vercel.app/visas/${uniqueId}`)
       .then((res) => res.json())
       .then((data) => {
         setUpdateData(data);
@@ -53,7 +53,7 @@ const MyVisaDetails = ({ visa, myVisas, setMyVisas }) => {
 
 
     // update visa
-    fetch(`http://localhost:3000/update/${id}`, {
+    fetch(`https://server-one-ashen-40.vercel.app/update/${id}`, {
       method: "PUT",
       headers: {
         'content-type' : "application/json",
@@ -76,7 +76,7 @@ const MyVisaDetails = ({ visa, myVisas, setMyVisas }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/visaDetails/${id}`, {
+        fetch(`https://server-one-ashen-40.vercel.app/visaDetails/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

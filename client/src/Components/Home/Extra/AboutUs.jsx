@@ -4,6 +4,7 @@ import about1 from "/assets/about-1.jpg";
 import about2 from "/assets/about-2.jpg";
 import about3 from "/assets/about-3.jpg";
 import about4 from "/assets/about-4.jpg";
+import { Typewriter } from "react-simple-typewriter";
 
 const AboutUs = () => {
   return (
@@ -29,7 +30,16 @@ const AboutUs = () => {
         </h4>
 
         <h2 className="sm:text-5xl text-3xl font-bold my-5 ">
-          The most loved Agency
+        The most loved
+        <Typewriter
+            words={[' Service', ' Destination', ' Package', ' Agency']}
+            loop={5}
+            cursor
+            cursorStyle='_'
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
         </h2>
         <p>
           Voted the Fastest Solution to Implement and the Easiest to Administer

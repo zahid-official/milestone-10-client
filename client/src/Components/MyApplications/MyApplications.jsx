@@ -15,7 +15,7 @@ const MyApplications = () => {
 
   // useEffect for Data load
   useEffect(() => {
-    fetch(`http://localhost:3000/applications/${email}`)
+    fetch(`https://server-one-ashen-40.vercel.app/applications/${email}`)
       .then((res) => res.json())
       .then((data) => setLoadedData(data));
   }, [email]);
@@ -23,7 +23,7 @@ const MyApplications = () => {
   
   // useEffect for search
   useEffect(() => {
-    fetch(`http://localhost:3000/search?searchQuery=${search}`)
+    fetch(`https://server-one-ashen-40.vercel.app/search?searchQuery=${search}`)
       .then((res) => res.json())
       .then((data) => setLoadedData(data));
   }, [search])

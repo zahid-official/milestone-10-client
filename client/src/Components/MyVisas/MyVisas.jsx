@@ -13,7 +13,7 @@ const MyVisas = () => {
 
   // useEffect for Data load
   useEffect(() => {
-    fetch(`http://localhost:3000/visa/${email}`)
+    fetch(`https://server-one-ashen-40.vercel.app/visa/${email}`)
       .then((res) => res.json())
       .then((data) => setMyVisas(data));
   }, [email]);

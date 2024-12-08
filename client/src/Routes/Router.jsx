@@ -20,17 +20,17 @@ const Router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:3000/'),
+        loader: () => fetch('https://server-one-ashen-40.vercel.app'),
       },
       {
         path: "/allVisas",
         element: <AllVisas></AllVisas>,
-        loader: () => fetch('http://localhost:3000/visa'),
+        loader: () => fetch('https://server-one-ashen-40.vercel.app/visa'),
       },
       {
         path: "/visaDetails/:id",
         element: <VisaDetails></VisaDetails>,
-        loader: ({params}) => fetch(`http://localhost:3000/visaDetails/${params.id}`)
+        loader: ({params}) => fetch(`https://server-one-ashen-40.vercel.app/visaDetails/${params.id}`)
       },
       {
         path: "/addVisa",

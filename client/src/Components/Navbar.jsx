@@ -64,6 +64,12 @@ const Navbar = () => {
       )}
     </>
   );
+
+  // darkmode
+  const handleThemeChange = (e) => {
+    const theme = e.target.checked ? "aqua" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
+  };
   return (
     <>
       <div className="navbar sm:w-11/12 mx-auto py-6 px-3 bg-base-100">
@@ -79,7 +85,19 @@ const Navbar = () => {
 
         <div className="navbar-end gap-2">
           {/* darkmode */}
-          
+          <div className="pr-4">
+            <div>
+              <label>
+                <input
+                  type="checkbox"
+                  value="aqua"
+                  className="toggle theme-controller"
+                  onChange={handleThemeChange}
+                />
+              </label>
+            </div>
+          </div>
+
           {users?.email ? (
             <div className="relative rounded-full profilePhoto">
               <img

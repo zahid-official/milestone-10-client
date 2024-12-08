@@ -11,7 +11,7 @@ const AllVisas = () => {
 
   // handleFilter
   const handleFilter = (visaType) => {
-    fetch(`http://localhost:3000/filters/${visaType}`)
+    fetch(`https://server-one-ashen-40.vercel.app/filters/${visaType}`)
     .then(res => res.json())
     .then(data => setFilteredData(data))
   };

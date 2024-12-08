@@ -50,7 +50,7 @@ const VisaDetails = () => {
     };
 
     // create applicationsData in mongoDB
-    fetch("http://localhost:3000/applications", {
+    fetch("https://server-one-ashen-40.vercel.app/applications", {
       method: "POST",
       headers: {
         "content-type": "application/json",
