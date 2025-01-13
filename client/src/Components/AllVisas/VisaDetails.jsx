@@ -1,8 +1,14 @@
 import { useLoaderData } from "react-router-dom";
 import PageTitle from "../AddVisa/PageTitle";
 import { toast } from "react-toastify";
+import { useContext } from "react";
+import ContextAPI from "../Auth/ContextAPI";
 
 const VisaDetails = () => {
+  // useContext
+  const {users} = useContext(ContextAPI);
+  const applicantEmail = users?.email;
+
   const data = useLoaderData();
   const {
     countryFlag,
@@ -15,8 +21,8 @@ const VisaDetails = () => {
     ageRestriction,
     requiredDocuments,
     description,
-    userEmail,
   } = data;
+
 
   // date formating
   const currentDate = new Date();
@@ -67,7 +73,7 @@ const VisaDetails = () => {
   };
 
   return (
-    <div className="bg-[#f9f9f9] pt-16 pb-36">
+    <div className="pt-16 pb-40">
       <PageTitle
         heading1={"Visa"}
         heading2={"Details"}
@@ -76,7 +82,7 @@ const VisaDetails = () => {
 
       {/* details */}
       <div>
-        <div className="hero bg-white xl:w-10/12 w-11/12 mx-auto sm:py-28 py-14 rounded-3xl">
+        <div className="hero shadow-xl xl:w-10/12 w-11/12 mx-auto pt-14 pb-32 rounded-3xl">
           <div className="hero-content gap-10 flex-col lg:flex-row w-full">
             <div className="flex-1 flex justify-center">
               <img src={countryFlag} className="sm:max-w-sm" />
@@ -155,7 +161,7 @@ const VisaDetails = () => {
                 <input
                   type="email"
                   name="applicantEmail"
-                  defaultValue={userEmail}
+                  defaultValue={applicantEmail}
                   placeholder="Email"
                   className="input input-bordered"
                   disabled

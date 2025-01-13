@@ -74,6 +74,7 @@ const AuthProver = ({ children }) => {
     setLoading,
   };
 
+
   return (
     <div>
       <ContextAPI.Provider value={contextValue}>

@@ -1,54 +1,73 @@
 /* eslint-disable react/prop-types */
-
+import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
+const Card = ({ card, idx }) => {
+  const {
+    _id: id,
+    countryName,
+    countryFlag,
+    visaType,
+    visaFee,
+    validatiy,
+    processingTime,
+    applicationMethod,
+  } = card;
 
-const Card = ({card}) => {
+  return (
+    <>
+      <div className="justify-self-center bg-[#f6f6f6] bg-[url(/assets/bg-2.png)] bg-cover px-10 py-14 rounded-xl flex flex-col justify-between items-start space-y-8 max-w-[26rem] custom-card">
+        {/* img */}
+        <div className="h-16 w-16">
+          <img
+            src={countryFlag}
+            alt="flag"
+            className="w-full h-full object-cover rounded-[50%]"
+          />
+        </div>
 
-    const {
-        _id: id,
-        countryName,
-        countryFlag,
-        visaType,
-        visaFee,
-        validatiy,
-        processingTime,
-        applicationMethod,
-      } = card;
-    
-    return (
-        <div className="h-full">
-      <div className="card bg-[#eff2e6] mx-auto pt-5 pb-16 px-2 custom-card h-full">
-        <div>
-          <div className="h-16 w-16 mt-8 ml-10">
-            <img
-              src={countryFlag}
-              alt="flag"
-              className="w-full h-full object-cover rounded-[50%]"
-            />
+        {/* content */}
+        <div className="pb-2">
+          <div className="flex items-center gap-1">
+            <div className="h-[1px] w-10 bg-[#83cd20]"></div>
+            <p className="font-semibold text-[#034833]">0{idx + 1}</p>
+          </div>
+
+          <h2 className="text-3xl mb-4 font-bold text-[#034833]">
+            {countryName}
+          </h2>
+          <div className="space-y-1.5">
+            <p className="text-[#185744]">
+              <span className="font-semibold">Fee: </span>${visaFee}
+            </p>
+            <p className="text-[#185744]">
+              <span className="font-semibold">Validity: </span>
+              {validatiy}
+            </p>
+            <p className="text-[#185744]">
+              <span className="font-semibold">Visa Type: </span>
+              {visaType}
+            </p>
+            <p className="text-[#185744]">
+              <span className="font-semibold">Processing Time: </span>
+              {processingTime}
+            </p>
+            <p className="text-[#185744]">
+              <span className="font-semibold">Application Method: </span>
+              {applicationMethod}
+            </p>
           </div>
         </div>
-        <div className="pt-5 flex flex-col justify-between px-5 h-full">
-          <div>
-            <h2 className="card-title text-2xl font-bold">{countryName}</h2>
-            <p className="font-semibold text-lg">Type: {visaType}</p>
-            <p className="font-semibold text-lg">Fee: ${visaFee}</p>
-            <br />
-            <p className="font-semibold text-lg">Validity: {validatiy}</p>
-            <p className="font-semibold text-lg">Processing Time: {processingTime}</p>
-            <p className="font-semibold text-lg">Application Method: {applicationMethod}</p>
-          </div>
-          <div className="card-actions mt-5">
-            <Link to={`/visaDetails/${id}`} className="w-full">
-              <button className="btn w-full hover:bg-[#898d4fbe] text-lg font-bold custom-effect2">
-                <span className="z-10">See Details</span>
-              </button>
-            </Link>
-          </div>
-        </div>
+
+        {/* button */}
+        <Link to={`/visaDetails/${id}`} className="w-full">
+          <button className="btn h-14 px-10 font-bold text-[#185744] bg-white hover:bg-[#45a735] hover:text-white transition-all duration-500 rounded-full">
+            More Details <FaArrowRightLong />
+          </button>
+        </Link>
       </div>
-    </div>
-    );
+    </>
+  );
 };
 
 export default Card;

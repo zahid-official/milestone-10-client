@@ -24,7 +24,7 @@ const Banner = () => {
           clickable: true,
         }}
         modules={[Pagination, Autoplay, EffectFade]}
-        className="mySwiper min-h-[85vh] bg-[#f1f5eb] w-11/12 mx-auto  rounded-3xl"
+        className="mySwiper min-h-[80vh] bg-[#f1f5eb] w-11/12 mx-auto  rounded-3xl"
       >
         {/* slider-01 */}
         <SwiperSlide>

@@ -66,14 +66,15 @@ const MyApplications = () => {
           </label>
         </div>
 
-        <div className="grid 2xl:grid-cols-3 lg:grid-cols-2 gap-10 px-4 sm:px-20 pt-10 pb-36 rounded-[60px]">
+        <div className="flex flex-wrap justify-center gap-10 max-w-[90rem] mx-auto mt-20">
           {loadedData &&
-            loadedData.map((application) => (
+            loadedData.map((application, idx) => (
               <ApplicationDetails
                 key={application._id}
                 application={application}
                 loadedData={loadedData}
                 setLoadedData={setLoadedData}
+                idx={idx}
               ></ApplicationDetails>
             ))}
         </div>

@@ -9,7 +9,7 @@ const VisaInfo = () => {
   const [requiredDocuments, setRequiredDocuments] = useState({});
   const {users} = useContext(ContextAPI);
 
-
+  
   // handleValidPassport
   const handleValidPassport = (event) => {
     const checkbox = event.target;
@@ -46,6 +46,7 @@ const VisaInfo = () => {
     const description = event.target.textarea.value;
     const userEmail = users?.email;
 
+
     // validation number input
     if (visaFee < 0 || ageRestriction < 0) {
       return toast.error("You Provide a Invalid Number in Number Input Field.");
@@ -64,7 +65,6 @@ const VisaInfo = () => {
       description,
       userEmail,
     };
-
 
     // create visaData in mongoDB
     fetch("https://server-one-ashen-40.vercel.app/visa", {
@@ -87,7 +87,7 @@ const VisaInfo = () => {
         {/* top */}
         <div className="flex items-center justify-center xl:flex-row flex-col gap-10">
           {/* leftside */}
-          <div className="w-full sm:px-10 px-5 sm:py-24 py-14 bg-white rounded-3xl space-y-8">
+          <div className="w-full sm:px-10 px-5 sm:py-24 py-14 bg-[#f9f9f9] rounded-3xl space-y-8">
             {/* title */}
             <div className="flex sm:flex-row flex-col  items-center sm:justify-start justify-center gap-5 mb-10 sm:text-left text-center">
               <div className="p-8 bg-[#26472b] inline-block rounded-full">
@@ -137,7 +137,7 @@ const VisaInfo = () => {
                 <option value="Student Visa">Student Visa</option>
                 <option value="Official Visa">Official Visa</option>
                 <option value="Medical Visa">Medical Visa</option>
-                <option value="Conference visa">Conference visa</option>
+                <option value="Conference Visa">Conference Visa</option>
               </select>
 
               <select
@@ -154,11 +154,11 @@ const VisaInfo = () => {
                 <option value="Visa Application Center">
                   Visa Application Center
                 </option>
-                <option value="Government Visa Application">
-                  Government Visa Application
+                <option value="Govt. Visa Application">
+                  Govt. Visa Application
                 </option>
-                <option value="Embassy/Consulate Application">
-                  Embassy/Consulate Application
+                <option value="Embassy Application">
+                  Embassy Application
                 </option>
               </select>
             </div>
@@ -174,7 +174,7 @@ const VisaInfo = () => {
           </div>
 
           {/* rightside */}
-          <div className="w-full sm:px-10 px-5 sm:py-24 py-14 bg-white rounded-3xl space-y-8">
+          <div className="w-full sm:px-10 px-5 sm:py-24 py-14 bg-[#f9f9f9] rounded-3xl space-y-8">
             {/* title */}
             <div className="flex sm:flex-row flex-col  items-center sm:justify-start justify-center gap-5 mb-10 sm:text-left text-center">
               <div className="p-8 bg-[#26472b] inline-block rounded-full">
@@ -266,7 +266,7 @@ const VisaInfo = () => {
         </div>
 
         {/* bottom */}
-        <div className="sm:px-10 px-6 sm:py-16 py-8 bg-white rounded-3xl text-center">
+        <div className="sm:px-10 px-6 sm:py-16 py-8 bg-[#f9f9f9] rounded-3xl text-center">
           <textarea
             rows={"4"}
             name="textarea"

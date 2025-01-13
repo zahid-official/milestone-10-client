@@ -11,13 +11,17 @@ const AllVisas = () => {
 
   // handleFilter
   const handleFilter = (visaType) => {
+
     fetch(`https://server-one-ashen-40.vercel.app/filters/${visaType}`)
     .then(res => res.json())
-    .then(data => setFilteredData(data))
+    .then(data => {
+      setFilteredData(data)
+      console.log(data)
+    })
   };
 
   return (
-    <div className="pt-16 bg-[#f9f9f9] relative">
+    <div className="pt-16  relative mx-3">
       {/* dropdown */}
       <details className="dropdown absolute top-8 left-16">
         <summary className="btn m-1 text-lg font-bold">Filter by Visa Type</summary>
@@ -71,9 +75,9 @@ const AllVisas = () => {
         subHeading={"All Visas"}
       ></PageTitle>
 
-      <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-10 px-4 sm:px-20 pt-10 pb-36 rounded-[60px]">
-        {filteredData.map((visa) => (
-          <DisplayVisa key={visa._id} visa={visa}></DisplayVisa>
+      <div className="flex flex-wrap justify-center gap-10 max-w-[90rem] mx-auto mt-8 mb-40 ">
+        {filteredData.map((visa, idx) => (
+          <DisplayVisa key={visa._id} visa={visa} idx={idx}></DisplayVisa>
         ))}
       </div>
     </div>

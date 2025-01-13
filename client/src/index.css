@@ -88,6 +88,14 @@ a.active:hover::after,
 }
 
 
+.custom-icon span{
+    transition: .2s;
+    transform: rotate(-45deg);
+}
+.custom-icon:hover span{
+    transform: rotate(0deg);
+}
+
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -96,5 +104,9 @@ input::-webkit-inner-spin-button {
 }
 
 
-
-
+.number {
+    font-size: 80px; 
+    font-weight: bold;
+    color: transparent; 
+    -webkit-text-stroke: 1.5px #034833;
+}

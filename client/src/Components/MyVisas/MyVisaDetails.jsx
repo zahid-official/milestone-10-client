@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
 
-const MyVisaDetails = ({ visa, myVisas, setMyVisas }) => {
+const MyVisaDetails = ({ visa, idx, myVisas, setMyVisas }) => {
   // state for update
   const [updateData, setUpdateData] = useState(null);
 
@@ -49,16 +49,18 @@ const MyVisaDetails = ({ visa, myVisas, setMyVisas }) => {
       applyMethod,
     };
 
-    console.log(applyMethod)
-
 
     // update visa
     fetch(`https://server-one-ashen-40.vercel.app/update/${id}`, {
       method: "PUT",
       headers: {
-        'content-type' : "application/json",
+        "content-type": "application/json",
       },
       body: JSON.stringify(updatedValue),
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
     })
 
     document.getElementById(`my_modal_${id}`).close();
@@ -95,69 +97,74 @@ const MyVisaDetails = ({ visa, myVisas, setMyVisas }) => {
   };
 
   return (
-    <div className="bg-[#f9f9f9]">
+    <>
       {/* details */}
-      <div className="bg-white h-full rounded-3xl">
-        <div className="hero sm:py-20 py-14 h-full">
-          <div className="hero-content gap-10 flex-col justify-between h-full w-full">
-            <div className="flex-1 flex justify-center">
-              <img src={countryFlag} className="sm:max-w-sm" />
+      <div>
+        <div className="justify-self-center bg-[#f6f6f6] bg-[url(/assets/bg-2.png)] bg-cover px-10 py-14 rounded-xl flex flex-col justify-between items-start space-y-8 max-w-[26rem] custom-card">
+          {/* img */}
+          <div className="h-16 w-16">
+            <img
+              src={countryFlag}
+              alt="flag"
+              className="w-full h-full object-cover rounded-[50%]"
+            />
+          </div>
+
+          {/* content */}
+          <div className="pb-2">
+            <div className="flex items-center gap-1">
+              <div className="h-[1px] w-10 bg-[#83cd20]"></div>
+              <p className="font-semibold text-[#034833]">
+                {idx < 9 ? 0 : ""}
+                {idx + 1}
+              </p>
             </div>
 
-            <div className="flex-1 flex flex-col justify-between px-4 space-y-1.5">
-              <div>
-                {/* heading */}
-                <div className="space-y-2">
-                  <h1 className="sm:text-5xl text-4xl font-bold">
-                    {countryName}
-                  </h1>
-                  <p className="font-semibold sm:text-xl">
-                    Visa Type: {visaType}
-                  </p>
-                  <p className="font-semibold sm:text-lg">Fee: ${visaFee}</p>
-                </div>
-
-                <br />
-                <p>
-                  <span className="font-semibold">Validatiy: </span>
-                  {validatiy}
-                </p>
-
-                <p>
-                  <span className="font-semibold">Processing Time: </span>
-                  {processingTime}
-                </p>
-
-                <p>
-                  <span className="font-semibold">Application Method: </span>
-                  {applicationMethod}
-                </p>
-
-                {/* spacing for btn */}
-                <div className="pt-4 pb-8"></div>
-              </div>
-
-              <div className="flex gap-5">
-                {/* update btn */}
-                <button
-                  onClick={() => {
-                    handleUpdateData(id);
-                    document.getElementById(`my_modal_${id}`).showModal();
-                  }}
-                  className="btn font-bold px-12 h-14 hover:bg-[#898d4fbe] text-lg custom-effect2"
-                >
-                  <span className="z-10">Update</span>
-                </button>
-
-                {/* delete btn */}
-                <button
-                  onClick={handleDelete}
-                  className="btn font-bold px-12 h-14 hover:bg-[#dd3333] text-lg custom-effect3"
-                >
-                  <span className="z-10">Delete</span>
-                </button>
-              </div>
+            <h2 className="text-3xl mb-4 font-bold text-[#034833]">
+              {countryName}
+            </h2>
+            <div className="space-y-1.5">
+              <p className="text-[#185744]">
+                <span className="font-semibold">Fee: </span>${visaFee}
+              </p>
+              <p className="text-[#185744]">
+                <span className="font-semibold">Validity: </span>
+                {validatiy}
+              </p>
+              <p className="text-[#185744]">
+                <span className="font-semibold">Visa Type: </span>
+                {visaType}
+              </p>
+              <p className="text-[#185744]">
+                <span className="font-semibold">Processing Time: </span>
+                {processingTime}
+              </p>
+              <p className="text-[#185744]">
+                <span className="font-semibold">Application Method: </span>
+                {applicationMethod}
+              </p>
             </div>
+          </div>
+
+          <div className="flex justify-between w-full">
+            {/* update button */}
+            <button
+              onClick={() => {
+                handleUpdateData(id);
+                document.getElementById(`my_modal_${id}`).showModal();
+              }}
+              className="btn px-8 font-bold text-[#185744] bg-white hover:bg-[#45a735] hover:text-white transition-all duration-500 rounded-full"
+            >
+              Update
+            </button>
+
+            {/* delete button */}
+            <button
+              onClick={handleDelete}
+              className="btn px-8 font-bold bg-[#dd3333] text-white hover:bg-[#be0202] hover:text-white transition-all duration-500 rounded-full"
+            >
+              Delete
+            </button>
           </div>
         </div>
       </div>
@@ -210,7 +217,7 @@ const MyVisaDetails = ({ visa, myVisas, setMyVisas }) => {
                   <option value="Student Visa">Student Visa</option>
                   <option value="Official Visa">Official Visa</option>
                   <option value="Medical Visa">Medical Visa</option>
-                  <option value="Conference visa">Conference visa</option>
+                  <option value="Conference Visa">Conference Visa</option>
                 </select>
               </div>
 
@@ -267,11 +274,11 @@ const MyVisaDetails = ({ visa, myVisas, setMyVisas }) => {
                   <option value="Visa Application Center">
                     Visa Application Center
                   </option>
-                  <option value="Government Visa Application">
-                    Government Visa Application
+                  <option value="Govt. Visa Application">
+                    Govt. Visa Application
                   </option>
-                  <option value="Embassy/Consulate Application">
-                    Embassy/Consulate Application
+                  <option value="Embassy Application">
+                    Embassy Application
                   </option>
                 </select>
               </div>
@@ -286,7 +293,7 @@ const MyVisaDetails = ({ visa, myVisas, setMyVisas }) => {
           </form>
         </div>
       </dialog>
-    </div>
+    </>
   );
 };
 

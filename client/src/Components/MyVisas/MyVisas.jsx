@@ -28,21 +28,22 @@ const MyVisas = () => {
 
   return (
     <>
-      <div className="bg-[#f9f9f9] pt-16 pb-36">
+      <div className="pt-16 pb-36">
         <PageTitle
           heading1={"My"}
           heading2={"Visas"}
           subHeading={"My Visas"}
         ></PageTitle>
 
-        <div className="grid 2xl:grid-cols-3 lg:grid-cols-2 gap-10 px-4 sm:px-20 pt-10 pb-36 rounded-[60px]">
+        <div className="flex flex-wrap justify-center gap-10 max-w-[90rem] mx-auto mt-20">
           {myVisas &&
-            myVisas.map((visa) => (
+            myVisas.map((visa, idx) => (
               <MyVisaDetails
                 key={visa._id}
                 visa={visa}
                 myVisas={myVisas}
                 setMyVisas={setMyVisas}
+                idx={idx}
               ></MyVisaDetails>
             ))}
         </div>
