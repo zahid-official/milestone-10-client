@@ -33,7 +33,7 @@ Viso is powered by the latest web technologies to deliver a seamless, dynamic ex
 ---
 
 ## 🔗 Live Demo:
-Check out our live demo here: https://viso-official.surge.sh/
+Check out our live demo here: viso-official.netlify.app/
 
 ---
 
