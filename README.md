@@ -1,4 +1,4 @@
-# Viso - Visa Application Companion
+# Viso - Visa Navigator Portal
 
 Welcome to **Viso**, your trusted and seamless visa application companion! Whether you're applying for your first visa or managing multiple applications, Viso is designed to make the visa process simple and stress-free.
 
@@ -33,7 +33,7 @@ Viso is powered by the latest web technologies to deliver a seamless, dynamic ex
 ---
 
 ## 🔗 Live Demo:
-Check out our live demo here: https://viso-official.surge.sh/
+Check out our live demo here: https://viso-official.netlify.app/
 
 ---
 
